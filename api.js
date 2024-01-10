@@ -1,4 +1,4 @@
-// app.js
+
 import { fetchStateData } from './api.js';
 import { displayStateFact } from './utils.js';
 
@@ -13,7 +13,33 @@ async function initStateGame() {
     }
 }
 
-// Event listeners for user interactions (e.g., guess submission) go here
+async function fetchStateData() {
+    try {
+        const response = await fetch('https://restcountries.com/v3.1/all');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Fetch error:', error);
+    }
+}
 
-// Initialize the game
+document.getElementById('guessForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevents the form from submitting traditionally
+
+    const userGuess = document.getElementById('userGuess').value.trim();
+   
+});
+
+document.getElementById('hintButton').addEventListener('click', function() {
+ 
+});
+
+document.getElementById('nextButton').addEventListener('click', function() {
+    
+});
+
+
 initStateGame();
